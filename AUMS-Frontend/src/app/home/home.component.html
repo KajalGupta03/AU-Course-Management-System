@@ -1,0 +1,57 @@
+<div class="eaton mat-typography" style="overflow-x: hidden" fxFlexFill cdkScrollable>
+    <mat-toolbar-row style="padding: 0 5px"> 
+      <div style="padding: 8px 0 0 10px; flex: 1">
+        <div class="mat-title" style="margin-bottom: 2px">
+          Courses
+          <button mat-stroked-button class="nav-link" id="add" (click)="addCourse()" > Add Course </button>
+        </div>
+        <button mat-stroked-button class="nav-link" id="trend" (click)="showTrends()" > Trends  </button>
+      </div>
+    </mat-toolbar-row>
+  <div >
+    
+    <div class="contain">
+       <div class="mat-elevation-z8">
+  
+        <mat-form-field>
+          <mat-label>Filter</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Search course" #input>
+        </mat-form-field>
+
+          <table mat-table [dataSource]="dataSource" >
+              <ng-container matColumnDef="courseName">
+                  <th mat-header-cell *matHeaderCellDef > Name </th>
+                  <td mat-cell *matCellDef="let row"> 
+                    <button mat-raised-button (click)="gotocourse(row.courseId)">{{row.courseName}}</button>
+                  </td>
+              </ng-container>
+              <ng-container matColumnDef="courseDescription">
+                  <th mat-header-cell *matHeaderCellDef > Description </th>
+                  <td mat-cell *matCellDef="let row"> {{row.courseDescription}} </td>
+              </ng-container>  
+              <ng-container matColumnDef="lastUpdated">
+                  <th mat-header-cell *matHeaderCellDef > Last Updated </th>
+                  <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.lastUpdated}} </td>
+              </ng-container> -->
+  
+              <ng-container matColumnDef="prerequisite">
+                  <th mat-header-cell *matHeaderCellDef > Prerequisites </th>
+                  <td mat-cell *matCellDef="let row"> {{row.prerequisite}} </td>
+              </ng-container>
+
+            <ng-container matColumnDef="button1">
+              <th mat-header-cell *matHeaderCellDef >Action</th>
+              <td mat-cell *matCellDef="let row"> 
+                <button mat-raised-button (click)="delete(row.courseId)"><mat-icon>delete</mat-icon></button> 
+              </td>
+          </ng-container>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+              </tr>
+          </table>
+      </div>
+  </div> 
+  </div>
+</div>
+
+

@@ -1,0 +1,71 @@
+.mat-list {
+  background-color: white;
+}
+.example-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  background-size: cover;
+}
+
+button {
+  background-color: black;
+  color: white;
+}
+/* .example-card {
+  margin-left: 500px;
+  margin-top: 50px;
+} */
+
+/* .flex-container {
+  flex-direction: row;
+  display: flex;
+  justify-content: space-around;
+} */
+
+#img1 {
+  margin-bottom: 10px;
+  max-width: 600px;
+  max-height: 600px;
+}
+
+.mr-10 {
+  margin-right: 10px;
+}
+
+.ml-10 {
+  margin-left: 10px;
+}
+.mform{
+  
+}
+table,
+th,
+td {
+  
+  margin-left: 10px;
+}
+th,
+td {
+  padding: 10px;
+}
+mat-card img {
+  object-fit: cover; 
+  width: 30%; 
+  height: 10%;
+  margin-left: 25%;
+}
+button{
+  background-color: teal;
+  width: 130px !important;
+  min-width: unset !important;
+}
+form{
+  border: 2px solid teal;
+  border-radius: 5px;
+}
+.uploadMaterial{
+  width: fit-content;
+  padding: 30px;
+}

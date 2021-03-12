@@ -1,0 +1,184 @@
+ <div
+  *ngIf="this.course"
+  fxLayout.xs="column"
+  fxLayout="row wrap"
+  fxLayoutGap="10px"
+  ngClass.gt-xs="ml-10"
+>
+
+<div>
+  <table>
+    <tr>
+      <td>
+        <div >
+          <mat-card
+            fxFlex.sm="0 1 calc(50%-10px)"
+            fxFlex.md="0 1 calc(33%-10px)"
+            fxFlex.gt-md="0 1 calc(25%-10px)"
+          >
+          <mat-card-content>
+            <h1><b> {{ this.course.courseName }} </b></h1>
+            <p> {{ this.course.createdOn }}</p>
+          </mat-card-content>
+            
+            <mat-card-content>
+              <h1> Course Description</h1>
+              <p> {{ this.course.courseDescription }} </p>
+              <h1> Skills </h1>
+              <mat-list-item *ngFor="let item of skills">
+                  <div mat-line>{{ item }}</div>
+                </mat-list-item>
+            </mat-card-content>
+            <mat-card-actions>
+              <table>
+                <tr>
+                  <td>
+                    <button mat-raised-button (click)="edit(this.course)">Edit Course</button>
+                  </td>
+                  <!-- <td>
+                    <button mat-raised-button (click)="formbool = true; disable()"> Update Material </button>
+                  </td> -->
+                </tr>
+                <tr>
+                  <td>
+                    <button mat-raised-button (click)="getlatest()">Latest Material</button>
+                  </td>
+                  <!-- <td>
+                    <button mat-raised-button (click)="getAll()">All Materials</button>
+                  </td> -->
+                </tr>
+              </table>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+        <div >
+          
+          
+      
+          
+
+          <div *ngIf="openAll">
+            <table>
+              <tr>
+                <th>Material Description</th>
+                <th>File Type</th>
+              </tr>
+              <ng-container *ngFor="let group of allmaterials">
+                <tr>
+                  <td>{{ group.materialDescription }}</td>
+                  <td>{{ group.fileType }}</td>
+                </tr>
+              </ng-container>
+            </table>
+          </div>
+      
+          
+        </div>
+      </td>
+      <td>
+        <img
+        mat-card-image id="img1"
+        src= '{{ this.course.imageUrl }}'
+      />
+      </td>
+      <td>
+        <mat-card
+            fxFlex.sm="0 1 calc(50%-10px)"
+            fxFlex.md="0 1 calc(33%-10px)"
+            fxFlex.gt-md="0 1 calc(25%-10px)">
+            <mat-card-header>
+              <h1> Feedbacks </h1>
+            </mat-card-header>
+            <mat-card-content
+              ><mat-list>
+                <mat-list-item *ngFor="let item of feedbacks">
+                  <div mat-line>{{ item.feedbackText }}</div>
+                  <div mat-line>{{ item.participantName }}</div>
+                  <div mat-line>{{ item.rating }}</div>
+                </mat-list-item>
+              </mat-list></mat-card-content
+            >
+          </mat-card>
+      </td>
+    </tr>
+    
+  </table>
+
+  <div *ngIf="openlatest && materials!=null" style="margin:10px 30px;padding: 20px 0px;" >
+    <table style="border:2px solid teal;border-radius: 10px;">
+      <tr>
+        <th>Material Description</th>
+        <th>File Type</th>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr  *ngFor='let i of materials;index as ind'>
+        <td>
+          {{ i.materialDescription }}
+        </td>
+        <td>
+          {{ i.fileType }}
+        </td>
+
+        <td >
+          <div style="display: flex;flex-direction: row; ;  ">
+            <div style="margin:0px 20px; ">
+              <mat-slide-toggle color="primary" (change)="show[ind]?hidePrevious(ind):showPrevious(i.materialId,ind)">Show previous</mat-slide-toggle>
+            <div *ngIf="show[ind]">
+              <table>
+                <tr *ngFor="let current of i.previousMaterial">
+                <td>
+                  {{ current.materialDescription }}
+                </td>
+                <td>
+                  {{ current.fileType }}
+                </td>
+                <td>
+                  <!-- <mat-card-actions>
+                    <button mat-raised-button (click)='updatematerial(i.materialId, ind)'>Update</button>
+                  </mat-card-actions> -->
+                </td>
+                </tr>
+              </table>
+            </div>
+            </div>
+            <div>
+              <button mat-raised-button (click)='formbool[ind] = true'  *ngIf="!formbool[ind]">Update</button>
+            </div>
+          </div>             
+        </td>
+        <td>
+          
+          <div *ngIf="formbool[ind]" class="mform">
+            <form [formGroup]="formgroup" class="uploadMaterial">
+              <div>
+                <mat-form-field>
+                  <label>Material Description</label>
+                  <input matInput formControlName="materialDescription" />
+                </mat-form-field>
+              <br>
+                <mat-form-field>
+                  <label>File</label>
+                  <mat-icon matSuffix>folder</mat-icon>
+                  <ngx-mat-file-input
+                    type="file"
+                    formControlName="file"
+                  ></ngx-mat-file-input>
+                </mat-form-field>
+                <br>
+                <mat-card-actions>
+                  <button mat-raised-button (click)="updatematerial(i.materialId,ind)">OK</button>
+                </mat-card-actions>
+              </div>
+            </form>
+          </div>   
+        </td>
+      </tr>
+    </table>
+  </div>
+
+
+
+</div>
+</div>
+

@@ -1,0 +1,25 @@
+
+<table>
+    <tr>
+        <td>
+            <div class="col-sm-6" style="display: block;  padding: 20px">
+                <div class="graph">
+                    <h1>Trending Skills</h1>
+                    <canvas baseChart [data]="skillValue" [labels]="skillName" [colors]="chartColors" [chartType]="pieChartType"></canvas>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="col-sm-6" style="display: block;  padding: 20px">
+                <div class="graph">
+                    <h1>Courses by Ratings</h1>
+                    <canvas baseChart [data]="ratingValue" [labels]="courseName" [colors]="chartColors" [chartType]="pieChartType"></canvas>
+                </div>
+            </div>
+            
+        </td>
+    </tr>
+</table>
+
+
+

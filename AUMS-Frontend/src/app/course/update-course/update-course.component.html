@@ -1,0 +1,27 @@
+<div mat-dialog-content>
+  <form [formGroup]="dialogformgroup">
+    <div>
+      <h1>Edit Course Details</h1>
+      <mat-form-field>
+        <label>Course Name</label>
+        <input matInput formControlName="courseName" />
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <label>Course Description</label>
+        <input matInput formControlName="courseDescription" />
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-evenly center">
+      <mat-form-field>
+        <label>Prerequisites</label>
+        <input matInput formControlName="prerequisite" />
+      </mat-form-field>
+    </div>
+
+    <div mat-dialog-actions fxLayout="row" fxLayoutAlign="space-evenly center">
+      <button mat-button cdkFocusInitial (click)="edit()">Ok</button>
+      <button mat-button (click)="close()">Close</button>
+    </div>
+  </form>
+</div>

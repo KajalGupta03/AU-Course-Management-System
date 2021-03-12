@@ -1,0 +1,29 @@
+body {
+  font-family: arial;
+}
+.jumbotron {
+  width: 450px;
+  margin: 0 auto;
+  padding: 2rem;
+  margin-top: 13%;
+}
+.marginBottom {
+  margin-bottom: 0.75rem;
+}
+.example-card {
+  max-width: 400px;
+}
+mat-card-title,
+mat-card-content {
+  display: flex;
+  justify-content: center;
+}
+:host {
+  display: flex;
+  justify-content: center;
+  margin: 200px 0px;
+}
+.img-fluid{
+  margin-top: 0%;
+}
+

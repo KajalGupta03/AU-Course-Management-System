@@ -1,0 +1,7 @@
+table,tr,td{
+    
+    width: 900px;
+}
+table{
+    table-layout: fixed;
+}

@@ -1,0 +1,14 @@
+table{
+    margin-left: 20%;
+    table-layout: fixed;
+}
+th,
+td {
+  padding: 40px;
+  width: 70px;
+}
+button{
+    margin-left: 10px;
+    background-color: teal;
+    color: white;
+}

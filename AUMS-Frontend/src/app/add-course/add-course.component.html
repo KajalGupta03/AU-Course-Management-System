@@ -1,0 +1,104 @@
+<table id="center">
+  <tr>
+    <td>
+
+      <div mat-card id="center">
+        <h1>Course Details</h1>
+        <form [formGroup]="dialogformgroup">
+          <div>
+            <mat-form-field>
+              <label>Course Name</label>
+              <input matInput formControlName="courseName" />
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+              <label>Course Description</label>
+              <input matInput formControlName="courseDescription" />
+            </mat-form-field>
+            <br>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-evenly center">
+            <mat-form-field>
+              <label>Prerequisites</label>
+              <input matInput formControlName="prerequisite" />
+            </mat-form-field>
+            <br>
+            <!-- <mat-form-field>
+              <label>User Id</label> -->
+              <input matInput formControlName="userId" />
+            <!-- </mat-form-field>  -->
+            <br>
+            <mat-form-field>
+              <label>Image Url</label>
+              <input matInput formControlName="imageUrl" />
+            </mat-form-field>
+            <!-- <mat-form-field>
+              <label>skills</label>
+              <input matInput formControlName="skills" />
+            </mat-form-field> -->
+          </div>
+      
+          <div mat-dialog-actions fxLayout="row" fxLayoutAlign="space-evenly center">
+            <button mat-raised-button (click)="close()">Cancel</button>
+            <button mat-raised-button cdkFocusInitial (click)="addcourse()">OK</button>
+          </div>
+        </form>
+      </div>
+
+
+    </td>
+    <td>
+
+
+      <div *ngIf="openmaterial" id="center">
+        <h1>Material</h1>
+        <form [formGroup]="materialformgroup">
+          <div>
+            <mat-form-field>
+              <label>Material Description</label>
+              <input matInput formControlName="materialDescription" />
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+              <label>File Type</label>
+              <input matInput formControlName="fileType" />
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+              <label>File</label>
+              <mat-icon matSuffix>folder</mat-icon>
+              <ngx-mat-file-input
+                type="file"
+                formControlName="file" [multiple]=true></ngx-mat-file-input>
+            </mat-form-field>
+          </div>
+          <mat-card-actions>
+            <button mat-raised-button (click)="addmaterialandskill()">Add</button>
+          </mat-card-actions>
+        </form>
+      </div>
+
+
+    </td>
+    <td>
+
+      <div *ngIf="openskill" id="center">
+        <h1>Skills</h1>
+      
+        <div>
+          <label>Select skills</label>
+          <section *ngFor="let ing of list" class="example-section">
+            <mat-checkbox (change)="addskills($event.checked, ing.skillId)">
+              {{ ing.skillName }}
+            </mat-checkbox>
+          </section>
+        </div>
+        <mat-card-actions>
+          <button mat-raised-button (click)="addfinally()">Done</button>
+        </mat-card-actions>
+      </div>
+      
+
+    </td>
+  </tr>
+</table>
